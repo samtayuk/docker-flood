@@ -13,11 +13,14 @@ RUN apk --no-cache --no-progress add ca-certificates nginx  nodejs bash && \
     cd /app/flood && npm install --production && \
     apk --no-progress del .build-dependencies && \
     ln -sf /dev/stdout /var/log/nginx/access.log && \
-    ln -sf /dev/stderr /var/log/nginx/error.log
+    ln -sf /dev/stderr /var/log/nginx/error.log && \
+    mkdir -p /data/db
 
 ADD config.js /app/flood/
 
 EXPOSE 80
+
+VOLUME [/data/db]
 
 WORKDIR /app
 

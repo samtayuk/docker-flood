@@ -11,7 +11,9 @@ RUN apk --no-cache --no-progress add ca-certificates nginx  nodejs bash && \
     chmod u+x /usr/local/bin/forego && \
     cd /app && git clone https://github.com/jfurrow/flood.git && \
     cd /app/flood && npm install --production && \
-    apk --no-progress del .build-dependencies
+    apk --no-progress del .build-dependencies && \
+    ln -sf /dev/stdout /var/log/nginx/access.log && \
+    ln -sf /dev/stderr /var/log/nginx/error.log
 
 ADD config.js /app/flood/
 

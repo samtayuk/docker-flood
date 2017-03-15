@@ -4,7 +4,7 @@ const CONFIG = {
   dbPath: './server/db/',
   floodServerPort: 3000,
   maxHistoryStates: 30,
-  pollInterval: 1000 * 5,
+  pollInterval: 1000,
   secret: 'flood',
   scgi: {
     host: 'rtorrent',
